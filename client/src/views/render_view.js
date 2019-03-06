@@ -17,7 +17,6 @@ RenderView.prototype.createElement = function (element,content,container,addClas
 };
 
 RenderView.prototype.createSlider = function (object,container) {
-  const itemDiv = document.createElement('div');
   const itemSlideText = document.createElement('p');
   itemSlideText.textContent = "Completed";
   const itemSliderLabel = document.createElement('label');
@@ -31,9 +30,9 @@ RenderView.prototype.createSlider = function (object,container) {
   const itemSliderSpan = document.createElement('span');
   itemSliderSpan.classList.add("slider","round");
 
-  container.appendChild(itemDiv);
-  itemDiv.appendChild(itemSlideText);
-  itemDiv.appendChild(itemSliderLabel);
+  container.appendChild(itemSlideText);
+  container.appendChild(itemSliderLabel);
+  // itemDiv.appendChild(itemSliderLabel);
   itemSliderLabel.appendChild(itemSliderInput);
   itemSliderLabel.appendChild(itemSliderSpan);
 
@@ -60,7 +59,6 @@ RenderView.prototype.createButton = function (id,container) {
   const itemButton = document.createElement('button');
   itemButton.textContent = "Delete";
   itemButton.classList.add('delete-button');
-  itemButton.value = id;
   container.appendChild(itemButton);
 
   itemButton.addEventListener('click',(evt) => {
