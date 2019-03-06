@@ -15,7 +15,6 @@ FormView.prototype.bindEvents = function () {
   })
 };
 
-
 FormView.prototype.createBLItem = function (evt) {
   return {
     name: evt['item-name'].value,

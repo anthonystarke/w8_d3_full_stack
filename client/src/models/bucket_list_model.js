@@ -11,14 +11,27 @@ BucketListModel.prototype.bindEvents = function () {
   PubSub.subscribe('FormView:submitted-data-sent',(evt) => {
     this.saveItem(evt.detail);
   })
-
   PubSub.subscribe('RenderView:delete-button-clicked',(evt) => {
     this.deleteItem(evt.detail);
   })
   PubSub.subscribe('RenderView:slider-changed',(evt) => {
     this.updateItem(evt.detail);
   })
+};
 
+BucketListModel.prototype.getItem = function (id) {
+  this.request.get(id)
+    .then((data) => {
+      PubSub.publish('BucketListModel:All-data-ready',data)
+    })
+};
+
+BucketListModel.prototype.updateItem = function (payload) {
+  const id = payload._id
+  this.request.put(payload,id)
+  .then((data) => {
+    PubSub.publish('BucketListModel:All-data-ready',data)
+  })
 };
 
 BucketListModel.prototype.getData = function () {

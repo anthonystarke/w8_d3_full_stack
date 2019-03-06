@@ -16,13 +16,14 @@ RenderView.prototype.createElement = function (element,content,container,addClas
   container.appendChild(newItem);
 };
 
-RenderView.prototype.createSlider = function (completed,container) {
+RenderView.prototype.createSlider = function (object,container) {
   const itemSliderLabel = document.createElement('label');
   itemSliderLabel.classList.add('switch');
 
   const itemSliderInput = document.createElement('input');
   itemSliderInput.setAttribute('type','checkbox');
-  itemSliderInput.checked = completed;
+  itemSliderInput.checked = object.completed;
+  itemSliderInput.value = object._id;
 
   const itemSliderSpan = document.createElement('span');
   itemSliderSpan.classList.add("slider","round");
@@ -31,8 +32,9 @@ RenderView.prototype.createSlider = function (completed,container) {
   itemSliderLabel.appendChild(itemSliderInput);
   itemSliderLabel.appendChild(itemSliderSpan);
 
-  itemSliderInput.addEventListener('change',(evt) =>{
-    PubSub.publish('RenderView:slider-changed',evt.target.checked);
+  itemSliderInput.addEventListener('change',(evt) => {
+    object.completed = evt.target.checked;
+    PubSub.publish('RenderView:slider-changed',object);
   })
 
 };
@@ -45,7 +47,7 @@ RenderView.prototype.render = function (object) {
   this.createElement('h2',object.name,itemDiv);
   this.createElement('h4',`Completed: ${object.completed}`,itemDiv,"completed");
 
-  this.createSlider(object.completed,itemDiv);
+  this.createSlider(object,itemDiv);
 
   const itemButton = this.createButton(object._id,itemDiv);
 };

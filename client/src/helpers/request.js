@@ -7,6 +7,11 @@ Request.prototype.get = function () {
     .then((response) => response.json());
 };
 
+Request.prototype.getItem = function (id) {
+    return fetch(`${this.url}/${id}`)
+      .then((response) => response.json());
+};
+
 Request.prototype.post = function (payload) {
   return fetch(this.url, {
     method: 'POST',
@@ -16,14 +21,15 @@ Request.prototype.post = function (payload) {
     .then((response) => response.json());
 };
 
-// Request.prototype.put = function (id,payload) {
-//   return fetch(`${this.url}/${id}`,{
-//     method:'PUT',
-//     body: JSON.stringify(payload),
-//     headers: { 'Content-Type' : 'application/json' }
-//   })
-//     .then((response) => response.json());
-// };
+Request.prototype.put = function (payload,id) {
+
+  return fetch(`${this.url}/${id}`, {
+    method:'PUT',
+    body: JSON.stringify(payload),
+    headers: { 'Content-Type' : 'application/json' }
+  })
+    .then((response) => response.json());
+};
 
 Request.prototype.delete = function (id) {
   return fetch(`${this.url}/${id}`, {
