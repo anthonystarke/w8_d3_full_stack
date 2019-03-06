@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Bucket List</title>
+    <script src="/js/bundle.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Skranji|Source+Serif+Pro" rel="stylesheet">
+    <link rel="stylesheet" href="/css/main.css">
+  </head>
+  <body>
+    <h1>Bucket List</h1>
+
+    <form id="form">
+      <div>
+        <label>Item Name</label>
+        <input type="text" id="item-name"/>
+      </div>
+        Time Scale: <select id="select-time-scale">
+        <option id="3-months">3 months</option>
+        <option id="6-months">6 months</option>
+        <option id="9-months">9 months</option>
+      </select>
+      <input type="submit" value="Save" id="save"/>
+    </form>
+
+    <label class="switch">
+      <input class="inputType" type="checkbox" checked>
+      <span class="slider round"></span>
+    </label>
+
+    <div id = "bl-container">
+
+    </div>
+  </body>
+</html>
