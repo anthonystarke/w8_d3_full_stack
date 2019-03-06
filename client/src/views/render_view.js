@@ -17,6 +17,9 @@ RenderView.prototype.createElement = function (element,content,container,addClas
 };
 
 RenderView.prototype.createSlider = function (object,container) {
+  const itemDiv = document.createElement('div');
+  const itemSlideText = document.createElement('p');
+  itemSlideText.textContent = "Completed";
   const itemSliderLabel = document.createElement('label');
   itemSliderLabel.classList.add('switch');
 
@@ -28,7 +31,9 @@ RenderView.prototype.createSlider = function (object,container) {
   const itemSliderSpan = document.createElement('span');
   itemSliderSpan.classList.add("slider","round");
 
-  container.appendChild(itemSliderLabel);
+  container.appendChild(itemDiv);
+  itemDiv.appendChild(itemSlideText);
+  itemDiv.appendChild(itemSliderLabel);
   itemSliderLabel.appendChild(itemSliderInput);
   itemSliderLabel.appendChild(itemSliderSpan);
 
@@ -45,7 +50,6 @@ RenderView.prototype.render = function (object) {
   itemDiv.classList.add('blItem');
 
   this.createElement('h2',object.name,itemDiv);
-  this.createElement('h4',`Completed: ${object.completed}`,itemDiv,"completed");
 
   this.createSlider(object,itemDiv);
 
