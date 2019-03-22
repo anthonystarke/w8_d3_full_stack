@@ -1,6 +1,8 @@
-# Games Hub
+# Bucket List
 
-Games Hub is a full stack JavaScript application with an Express server and MongoDB database.
+The software allows you to add/remove items to your bucket list, then change their state from not completed to complete. 
+
+Bucket list is a full stack JavaScript application with an Express server and MongoDB database.
 
 ## Getting Started
 
